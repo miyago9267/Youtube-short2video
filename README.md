@@ -1,4 +1,4 @@
-# Netorare Filter for Nhentai
+# YoutubeShortToVideo
 ## What is this?
 覺得Youtube Short沒辦法快轉調音量很麻煩?  
 透過本插件幫你把Short轉為影片
