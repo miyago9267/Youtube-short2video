@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Youtube_Short2video",
+  "version": "1.0",
+  "description": "Transform Youtube short video to full video",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "static/img/icon16.png",
+      "48": "static/img/icon48.png",
+      "128": "static/img/icon128.png"
+    },
+    "type": "declarativeNetRequest",
+    "declarative_net_request": {
+      "rule_resources": [{
+        "id": "Youtube_Short2video",
+        "enabled": true,
+        "path": "/static/rule/rule_1.json"
+      }]
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": [
+      "https://www.youtube.com/shorts/*",
+      "https://youtube.com/shorts/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "cookies",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "declarativeNetRequestWithHostAccess"
+
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
