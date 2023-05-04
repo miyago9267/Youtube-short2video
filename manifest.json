@@ -10,13 +10,14 @@
       "48": "static/img/icon48.png",
       "128": "static/img/icon128.png"
     },
-    "type": "declarativeNetRequest",
     "declarative_net_request": {
-      "rule_resources": [{
-        "id": "Youtube_Short2video",
-        "enabled": true,
-        "path": "/static/rule/rule_1.json"
-      }]
+      "rule_resources": [
+        {
+          "id": "Short2video",
+          "enabled": true,
+          "path": "static/rules/rule_1.json"
+        }
+      ]
     }
   },
   "background": {
@@ -39,9 +40,8 @@
     "declarativeNetRequest",
     "declarativeNetRequestFeedback",
     "declarativeNetRequestWithHostAccess"
-
   ],
-  "host_permissions": [
-    "<all_urls>"
-  ]
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
