@@ -4,18 +4,18 @@
   "version": "1.0",
   "description": "Transform Youtube short video to full video",
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "public/popup.html",
     "default_icon": {
-      "16": "static/img/icon16.png",
-      "48": "static/img/icon48.png",
-      "128": "static/img/icon128.png"
+      "16": "public/images/icon16.png",
+      "48": "public/images/icon48.png",
+      "128": "public/images/icon128.png"
     },
     "declarative_net_request": {
       "rule_resources": [
         {
           "id": "Short2video",
           "enabled": true,
-          "path": "static/rules/rule_1.json"
+          "path": "public/rules/rule_1.json"
         }
       ]
     }
