@@ -166,3 +166,4 @@ exec/
 data/
 .venv/
 node_modules/
+*.zip
