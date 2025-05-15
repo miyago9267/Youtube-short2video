@@ -1,15 +1,13 @@
-chrome.webRequest.onBeforeRequest.addListener(
-	(details) => {
-	  const url = new URL(details.url);
-	  if (url.pathname.startsWith('/shorts/')) {
-		const newPath = url.pathname.replace('/shorts/', '/watch?v=');
-		return { redirectUrl: url.origin + newPath + url.search };
-	  }
-	},{
-		urls: [
-			"*://*.youtube.com/",
-			"*://youtu.be/"
-		]
-	},
-	["blocking"]
-  );
+chrome.webNavigation.onCommitted.addListener((details) => {
+  const url = new URL(details.url);
+  if ((url.hostname === "www.youtube.com" || url.hostname === "youtube.com") && url.pathname.startsWith("/shorts/")) {
+    const shortsId = url.pathname.split("/")[2];
+    const newUrl = `https://www.youtube.com/watch?v=${shortsId}`;
+    chrome.tabs.update(details.tabId, { url: newUrl });
+  }
+}, {
+  url: [
+    { hostEquals: "www.youtube.com", pathPrefix: "/shorts/" },
+    { hostEquals: "youtube.com", pathPrefix: "/shorts/" }
+  ]
+});

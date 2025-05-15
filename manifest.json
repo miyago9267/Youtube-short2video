@@ -1,47 +1,41 @@
 {
   "manifest_version": 3,
   "name": "Youtube_Short2video",
-  "version": "1.0",
+  "version": "2.0.0",
   "description": "Transform Youtube short video to full video",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
   "action": {
-    "default_popup": "public/popup.html",
+    "default_popup": "popup.html",
     "default_icon": {
-      "16": "public/images/icon16.png",
-      "48": "public/images/icon48.png",
-      "128": "public/images/icon128.png"
-    },
-    "declarative_net_request": {
-      "rule_resources": [
-        {
-          "id": "Short2video",
-          "enabled": true,
-          "path": "public/rules/rule_1.json"
-        }
-      ]
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
     }
   },
-  "background": {
-    "service_worker": "background.js"
-  },
-  "content_scripts": [{
-    "matches": [
-      "https://www.youtube.com/shorts/*",
-      "https://youtube.com/shorts/*"
-    ],
-    "js": [
-      "content.js"
-    ]
-  }],
   "permissions": [
     "tabs",
-    "activeTab",
-    "storage",
-    "cookies",
-    "declarativeNetRequest",
-    "declarativeNetRequestFeedback",
-    "declarativeNetRequestWithHostAccess"
+    "webNavigation",
+    "declarativeNetRequest"
   ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+  "host_permissions": ["*://youtube.com/shorts/*", "*://www.youtube.com/shorts/*"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "redirect-shorts",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "https://youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
 }

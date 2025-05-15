@@ -1,18 +1,19 @@
 {
   "name": "youtube_short2video",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "覺得Youtube Short沒辦法快轉調音量很麻煩?   透過本插件幫你把Short轉為影片",
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/chrome": "^0.0.263",
     "archiver": "^7.0.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "vite": "^6.3.5"
   }
 }
